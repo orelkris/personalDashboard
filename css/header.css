@@ -128,12 +128,13 @@ header {
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 @media screen and (max-width: 40em) {
-  .weather-container {
+  .weather {
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1.2rem;
   }
 }
 

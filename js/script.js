@@ -164,8 +164,8 @@ function getCoordinates() {
 
 function createWeatherObj(obj) {
   return {
-    temp: obj.main.temp,
-    feelsLike: obj.main.feels_like,
+    temp: Math.floor(obj.main.temp),
+    feelsLike: Math.floor(obj.main.feels_like),
   };
 }
 
