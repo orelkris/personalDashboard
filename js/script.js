@@ -11,7 +11,6 @@ function getBackgroundImage() {
       createBackgroundImageHtml(bgImage);
     })
     .catch((err) => {
-      console.log("Something went wrong");
       // This is where I can handle the error
       // For example, a default background image can be used
 
@@ -72,7 +71,7 @@ function getCryptoInfo(coinType) {
       createCryptoHtml(coinObj);
     })
     .catch((err) => {
-      console.log(err);
+      createCryptoHtml();
     });
 }
 
@@ -89,9 +88,16 @@ function createCryptoObjectAPI(obj) {
   };
 }
 
-function createCryptoHtml(obj) {
+function createCryptoHtml(obj = {}) {
   const header = document.getElementById("crypto-header");
   const body = document.getElementById("crypto-body");
+
+  if (Object.keys(obj).length === 0) {
+    const error = createElement("p");
+    error.textContent = `Crypto data not available`;
+    header.appendChild(error);
+    return;
+  }
 
   // header
   const image = createElement("img");
@@ -141,7 +147,6 @@ const apiKey = "f575e56264f4022e0ea535aa2860e455";
 getCoordinates();
 function getCoordinates() {
   if ("geolocation" in navigator) {
-    // console.log("can use");
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
       const lon = position.coords.longitude;
@@ -153,24 +158,39 @@ function getCoordinates() {
       fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
       )
-        .then((res) => res.json())
+        .then((res) => {
+          if (!res.ok) {
+            throw Error("Weather data not available");
+          }
+          return res.json();
+        })
         .then((data) => {
           const weatherObj = createWeatherObj(data);
           createWeatherHtml(weatherObj);
+        })
+        .catch((err) => {
+          createWeatherHtml();
         });
     });
   }
 }
 
 function createWeatherObj(obj) {
-  return {
+  const weatherObj = {
     temp: Math.floor(obj.main.temp),
     feelsLike: Math.floor(obj.main.feels_like),
   };
+  return weatherObj;
 }
 
-function createWeatherHtml(obj) {
+function createWeatherHtml(obj = {}) {
   const weatherElem = document.getElementById("weather");
+  if (Object.keys(obj).length === 0) {
+    const error = createElement("p");
+    error.textContent = `Weather data not available`;
+    weatherElem.appendChild(error);
+    return;
+  }
 
   const pTemp = createElement("p");
   const spanTemp = createElement("span");
