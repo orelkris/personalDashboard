@@ -9,11 +9,16 @@
 }
 
 button {
-  background: linear-gradient(210deg, #11998e, #38ef7d);
+  /* background: linear-gradient(210deg, #e6f7f5, #badfc8); */
+  background: white;
   width: 10rem;
+  outline: none;
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0px 0px 10px hsl(0, 2%, 48%);
+  border-bottom: 1px solid rgb(0, 0, 0);
+  border-top: 1px solid rgb(0, 0, 0);
+
+  /* box-shadow: 0px 0px 10px hsl(0, 2%, 48%); */
 }
 
 @media screen and (max-width: 30rem) {

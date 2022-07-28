@@ -1,22 +1,40 @@
 // BACKGROUND IMAGE
 let bgImage = "";
 getBackgroundImage();
-async function getBackgroundImage() {
-  const response = await fetch(
+function getBackgroundImage() {
+  fetch(
     "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
-  );
-  const data = await response.json();
+  )
+    .then((res) => res.json())
+    .then((data) => {
+      bgImage = createImageObjectAPI(data);
+      createBackgroundImageHtml(bgImage);
+    })
+    .catch((err) => {
+      console.log("Something went wrong");
+      // This is where I can handle the error
+      // For example, a default background image can be used
 
-  bgImage = createImageObject(data);
-  createBackgroundImageHtml(bgImage);
+      bgImage = createImageObject();
+      createBackgroundImageHtml(bgImage);
+    });
 }
 
-function createImageObject(obj) {
+function createImageObjectAPI(obj) {
   return {
     src: obj.urls.full,
     alt: obj.alt_description,
     width: obj.width,
     author: obj.user.name,
+  };
+}
+
+function createImageObject() {
+  return {
+    src: "images/default-background.jpg",
+    alt: "beautiful lush green forest with an open path in the middle",
+    width: 2832,
+    author: "Luis Dalvan",
   };
 }
 

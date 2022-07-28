@@ -8,11 +8,11 @@
 }
 
 .main-nav ul {
+  background: hsl(0, 24%, 96%);
   list-style-type: none;
   padding: 0;
   margin: 0;
-  background: linear-gradient(270deg, #52c234, #061700);
-  box-shadow: 3px 3px 5px hsl(0, 0%, 11%);
+  box-shadow: 1px 1px 3px hsl(0, 0%, 11%);
 
   display: flex;
   justify-content: space-between;
@@ -30,17 +30,13 @@
 .nav-logo li {
   display: block;
   text-decoration: none;
-  color: white;
+  color: black;
   font-weight: 700;
   padding: 1em;
 }
 
-.nav-logo li {
-  color: yellow;
-}
-
 .main-nav li a:hover {
-  background: #194b09;
+  background: hsl(0, 0%, 100%);
 }
 
 @media screen and (max-width: 40em) {
