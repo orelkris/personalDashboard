@@ -110,7 +110,7 @@ function createCryptoHtml(obj) {
   publicScore.textContent = `Public Score: ${obj.publicScore}`;
 
   const currentPrice = createElement("p");
-  currentPrice.textContent = `Current Price: ${obj.currentPriceUSD}`;
+  currentPrice.textContent = `Current Price: $${obj.currentPriceUSD} USD`;
 
   const rank = createElement("p");
   rank.textContent = `Rank: ${obj.rank}`;
@@ -128,10 +128,13 @@ setInterval(() => {
 function createCurrentTimeHtml() {
   const timeElem = document.getElementById("current-time");
   const time = new Date();
-  const hours = time.getHours();
-  const minutes = time.getMinutes();
+  const timeString = time.toLocaleTimeString("en-CA", {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 
-  timeElem.textContent = `${hours} : ${minutes}`;
+  timeElem.textContent = timeString;
 }
 
 // FETCHING ASSIGNMENT DATA***
