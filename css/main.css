@@ -18,7 +18,9 @@ button {
   border-bottom: 1px solid rgb(0, 0, 0);
   border-top: 1px solid rgb(0, 0, 0);
 
-  /* box-shadow: 0px 0px 10px hsl(0, 2%, 48%); */
+  transition: box-shadow 250ms ease;
+
+  box-shadow: 0px 0px 10px hsl(0, 1%, 69%);
 }
 
 @media screen and (max-width: 30rem) {
@@ -52,10 +54,13 @@ button {
   color: black;
   text-decoration: none;
   box-shadow: 0px 0px 10px hsl(0, 2%, 48%);
+
+  transition: transform 250ms ease, box-shadow 250ms ease;
 }
 
 button:hover,
 .card a:hover {
+  transform: scale(1.05);
   cursor: pointer;
   box-shadow: 0px 0px 10px hsl(0, 0%, 7%);
 }
