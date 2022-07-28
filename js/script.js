@@ -170,7 +170,7 @@ function createWeatherObj(obj) {
 }
 
 function createWeatherHtml(obj) {
-  const weatherElem = document.getElementById("weather-container");
+  const weatherElem = document.getElementById("weather");
 
   const pTemp = createElement("p");
   const spanTemp = createElement("span");
