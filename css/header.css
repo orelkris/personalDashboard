@@ -1,6 +1,8 @@
 .outer-container {
   background: no-repeat center center fixed;
   background-size: cover;
+  background-color: rgba(5, 39, 112, 0.8);
+  background-blend-mode: overlay;
   height: 100vh;
   width: 100%;
   position: relative;
@@ -23,7 +25,14 @@ header {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 40em) {
+  .header-top {
+    margin-top: 15rem;
+  }
+}
+
 .header-middle {
+  flex: 2;
   padding: 1.5rem;
   display: flex;
   justify-content: center;
@@ -41,4 +50,45 @@ header {
   padding: 0.4rem;
   margin: 0 0 1.5rem 1.5rem;
   border-radius: 0.5rem;
+}
+
+/* CRYPTO */
+.crypto {
+  height: 15rem;
+  padding: 0 1rem 1rem;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 2px 2px 3px rgb(168, 159, 159);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.crypto p {
+  margin: 0;
+}
+.crypto-header {
+  flex: 1 0 30%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.crypto-body {
+  flex: 2 0 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* CURRENT TIME */
+.current-time {
+  font-size: 5rem;
+  text-shadow: 1px 1px 3px rgb(168, 159, 159);
+  color: hsl(0, 0%, 100%);
+}
+
+@media screen and (max-width: 40em) {
+  .current-time {
+    font-size: 3rem;
+  }
 }

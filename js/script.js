@@ -53,6 +53,87 @@ function createElement(elem) {
   return document.createElement(elem);
 }
 
+// GET COIN INFORMATION
+getCryptoInfo("bitcoin");
+
+// getCryptoInfo("bitcoin");
+
+function getCryptoInfo(coinType) {
+  fetch(`https://api.coingecko.com/api/v3/coins/${coinType}`)
+    .then((res) => {
+      if (!res.ok) {
+        throw Error("Unable to get requested coin");
+      }
+      return res.json();
+    })
+    .then((data) => {
+      const coinObj = createCryptoObjectAPI(data);
+      console.log(coinObj);
+
+      createCryptoHtml(coinObj);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+function createCryptoObjectAPI(obj) {
+  return {
+    name: obj.name,
+    image: {
+      src: obj.image.small,
+      alt: obj.name,
+    },
+    publicScore: obj.public_interest_score,
+    currentPriceUSD: obj.market_data.current_price.usd,
+    rank: obj.coingecko_rank,
+  };
+}
+
+function createCryptoHtml(obj) {
+  const header = document.getElementById("crypto-header");
+  const body = document.getElementById("crypto-body");
+
+  // header
+  const image = createElement("img");
+  image.setAttribute("src", obj.image.src);
+  image.setAttribute("alt", obj.image.alt);
+
+  const name = createElement("p");
+  name.textContent = obj.name;
+
+  header.appendChild(image);
+  header.appendChild(name);
+
+  // body
+  const publicScore = createElement("p");
+  publicScore.textContent = `Public Score: ${obj.publicScore}`;
+
+  const currentPrice = createElement("p");
+  currentPrice.textContent = `Current Price: ${obj.currentPriceUSD}`;
+
+  const rank = createElement("p");
+  rank.textContent = `Rank: ${obj.rank}`;
+
+  body.appendChild(publicScore);
+  body.appendChild(currentPrice);
+  body.appendChild(rank);
+}
+
+// CURRENT TIME
+setInterval(() => {
+  createCurrentTimeHtml();
+}, 1000);
+
+function createCurrentTimeHtml() {
+  const timeElem = document.getElementById("current-time");
+  const time = new Date();
+  const hours = time.getHours();
+  const minutes = time.getMinutes();
+
+  timeElem.textContent = `${hours} : ${minutes}`;
+}
+
 // FETCHING ASSIGNMENT DATA***
 
 const assignmentButtons = Array.from(

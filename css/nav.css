@@ -8,11 +8,11 @@
 }
 
 .main-nav ul {
-  background: hsl(0, 24%, 96%);
+  background: hsl(0, 0%, 100%);
   list-style-type: none;
   padding: 0;
   margin: 0;
-  box-shadow: 1px 1px 3px hsl(0, 0%, 11%);
+  box-shadow: 2px 2px 5px hsl(0, 0%, 11%);
 
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@
 }
 
 .main-nav li a:hover {
-  background: hsl(0, 0%, 100%);
+  background: hsl(0, 24%, 96%);
 }
 
 @media screen and (max-width: 40em) {
@@ -66,6 +66,6 @@
 @media screen and (min-width: 60em) {
   .nav-items li a,
   .nav-logo li {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 }
