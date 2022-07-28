@@ -151,9 +151,19 @@ assignmentButtons.forEach((button) => {
 });
 
 function showSection(type) {
-  fetch(`assignments/${type}.html`)
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("assignments").innerHTML = data;
-    });
+  const assignments = document.getElementById("assignments");
+  assignments.classList.add("fade-out");
+
+  setTimeout(() => {
+    fetch(`assignments/${type}.html`)
+      .then((response) => response.text())
+      .then((data) => {
+        assignments.innerHTML = data;
+      });
+  }, 1000);
+
+  assignments.addEventListener("animationend", () => {
+    assignments.classList.add("fade-in");
+    assignments.classList.remove("fade-out");
+  });
 }
