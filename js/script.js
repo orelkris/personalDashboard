@@ -68,7 +68,6 @@ function getCryptoInfo(coinType) {
     })
     .then((data) => {
       const coinObj = createCryptoObjectAPI(data);
-      console.log(coinObj);
 
       createCryptoHtml(coinObj);
     })
@@ -135,6 +134,69 @@ function createCurrentTimeHtml() {
   });
 
   timeElem.textContent = timeString;
+}
+
+// WEATHER API
+const apiKey = "f575e56264f4022e0ea535aa2860e455";
+getCoordinates();
+function getCoordinates() {
+  if ("geolocation" in navigator) {
+    // console.log("can use");
+    navigator.geolocation.getCurrentPosition((position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      const weather = {
+        latitude: lat,
+        longitude: lon,
+      };
+
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const weatherObj = createWeatherObj(data);
+          createWeatherHtml(weatherObj);
+        });
+    });
+  }
+}
+
+function createWeatherObj(obj) {
+  return {
+    temp: obj.main.temp,
+    feelsLike: obj.main.feels_like,
+  };
+}
+
+function createWeatherHtml(obj) {
+  const weatherElem = document.getElementById("weather-container");
+
+  const pTemp = createElement("p");
+  const spanTemp = createElement("span");
+  spanTemp.textContent = ` ${obj.temp}\u00B0`;
+  pTemp.textContent = `Current Temp:`;
+  pTemp.appendChild(spanTemp);
+
+  const pFeels = createElement("p");
+  const spanFeels = createElement("span");
+  spanFeels.textContent = ` ${obj.feelsLike}\u00B0`;
+  pFeels.textContent = `Feels Like:`;
+  pFeels.appendChild(spanFeels);
+
+  if (obj.temp > 25 || obj.feelsLike > 25) {
+    spanTemp.classList.add("hot");
+    spanFeels.classList.add("hot");
+  } else if (obj.temp < 10 || obj.feelsLike < 10) {
+    spanTemp.classList.add("cold");
+    spanFeels.classList.add("cold");
+  } else {
+    spanTemp.classList.add("normal");
+    spanFeels.classList.add("normal");
+  }
+
+  weatherElem.appendChild(pTemp);
+  weatherElem.appendChild(pFeels);
 }
 
 // FETCHING ASSIGNMENT DATA***

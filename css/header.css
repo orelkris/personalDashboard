@@ -92,3 +92,32 @@ header {
     font-size: 3rem;
   }
 }
+
+/* WEATHER */
+.weather-container {
+  font-size: 2rem;
+  text-shadow: 0px 0px 5px rgb(19, 15, 15);
+  color: rgb(255, 255, 255);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.hot,
+.normal,
+.cold {
+  font-weight: 700;
+}
+
+.hot {
+  color: rgb(245, 75, 75);
+}
+
+.normal {
+  color: rgb(182, 182, 42);
+}
+
+.cold {
+  color: rgb(40, 235, 241);
+}
