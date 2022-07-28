@@ -1,0 +1,44 @@
+.outer-container {
+  background: no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+.container-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.header-top {
+  margin-top: 5rem;
+  padding: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-middle {
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: start;
+}
+
+.author {
+  width: fit-content;
+  background: rgba(255, 255, 255, 0.4);
+  font-style: italic;
+  padding: 0.4rem;
+  margin: 0 0 1.5rem 1.5rem;
+  border-radius: 0.5rem;
+}

@@ -1,0 +1,51 @@
+html,
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font: 0.9rem/1.5 "Comic Sans MS", cursive;
+}
+
+@media screen and (min-width: 800px) {
+  html {
+    font: 1.125rem/1.5 "Comic Sans MS", cursive;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hgroup,
+ul,
+ol,
+dd,
+p,
+figure,
+pre,
+table,
+fieldset,
+hr {
+  margin-bottom: 1.5rem;
+}
+
+button {
+  border: none;
+}
+
+/* colors 
+
+*/
+
+/* ***typography*** */
+
+body {
+  font-family: "Ibarra Real Nova", serif;
+  letter-spacing: 0.1rem;
+  font-weight: 400;
+}
