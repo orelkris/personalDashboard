@@ -2,23 +2,39 @@ showSection("javascript");
 
 // BACKGROUND IMAGE
 let bgImage = "";
+getNewImage();
 getBackgroundImage();
 function getBackgroundImage() {
-  fetch(
-    "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
-  )
-    .then((res) => res.json())
-    .then((data) => {
-      bgImage = createImageObjectAPI(data);
-      createBackgroundImageHtml(bgImage);
-    })
-    .catch((err) => {
-      // This is where I can handle the error
-      // For example, a default background image can be used
+  const test = localStorage.getItem("bgImage");
+  console.log(JSON.parse(test));
+  if (test === null) {
+    fetch(
+      "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        bgImage = createImageObjectAPI(data);
+        createBackgroundImageHtml(bgImage);
 
-      bgImage = createImageObject();
-      createBackgroundImageHtml(bgImage);
-    });
+        localStorage.setItem("bgImage", JSON.stringify(bgImage));
+        localStorage.setItem(
+          "savedTime",
+          JSON.stringify(Math.floor(new Date().getTime() / 1000))
+        );
+      })
+      .catch((err) => {
+        // This is where I can handle the error
+        // For example, a default background image can be used
+
+        bgImage = createImageObject();
+        createBackgroundImageHtml(bgImage);
+      });
+
+    return;
+  }
+
+  bgImage = JSON.parse(test);
+  createBackgroundImageHtml(bgImage);
 }
 
 function createImageObjectAPI(obj) {
@@ -48,6 +64,14 @@ function createBackgroundImageHtml(imgObj) {
   author.classList.add("bg-image-author");
 
   outerContainer.appendChild(author);
+}
+
+function getNewImage(difference = 86400) {
+  const oldTime = JSON.parse(localStorage.getItem("savedTime"));
+  const currentTime = Math.floor(new Date().getTime() / 1000);
+  if (currentTime - oldTime > difference) {
+    localStorage.clear();
+  }
 }
 
 function createElement(elem) {
