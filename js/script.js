@@ -167,6 +167,7 @@ function getCoordinates() {
           return res.json();
         })
         .then((data) => {
+          console.log(data);
           const weatherObj = createWeatherObj(data);
           createWeatherHtml(weatherObj);
         })
@@ -179,9 +180,17 @@ function getCoordinates() {
 
 function createWeatherObj(obj) {
   const weatherObj = {
+    name: obj.name,
     temp: Math.floor(obj.main.temp),
     feelsLike: Math.floor(obj.main.feels_like),
+    image: {
+      src: `http://openweathermap.org/img/wn/${obj.weather[0].icon}@2x.png`,
+      alt: obj.weather[0].main,
+    },
   };
+
+  console.log(weatherObj);
+
   return weatherObj;
 }
 
@@ -195,30 +204,27 @@ function createWeatherHtml(obj = {}) {
   }
 
   const pTemp = createElement("p");
+  const image = createElement("img");
+  image.setAttribute("src", obj.image.src);
+  image.setAttribute("alt", obj.image.alt);
   const spanTemp = createElement("span");
-  spanTemp.textContent = ` ${obj.temp}\u00B0`;
-  pTemp.textContent = `Current Temp:`;
+  spanTemp.textContent = `${obj.temp}\u00B0`;
+  pTemp.appendChild(image);
   pTemp.appendChild(spanTemp);
 
-  const pFeels = createElement("p");
-  const spanFeels = createElement("span");
-  spanFeels.textContent = ` ${obj.feelsLike}\u00B0`;
-  pFeels.textContent = `Feels Like:`;
-  pFeels.appendChild(spanFeels);
+  const name = createElement("p");
+  name.textContent = `${obj.name}`;
 
-  if (obj.temp > 25 || obj.feelsLike > 25) {
+  if (obj.temp > 25) {
     spanTemp.classList.add("hot");
-    spanFeels.classList.add("hot");
-  } else if (obj.temp < 10 || obj.feelsLike < 10) {
+  } else if (obj.temp < 10) {
     spanTemp.classList.add("cold");
-    spanFeels.classList.add("cold");
   } else {
     spanTemp.classList.add("normal");
-    spanFeels.classList.add("normal");
   }
 
   weatherElem.appendChild(pTemp);
-  weatherElem.appendChild(pFeels);
+  weatherElem.appendChild(name);
 }
 
 // FETCHING ASSIGNMENT DATA***
