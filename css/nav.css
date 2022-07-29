@@ -34,7 +34,7 @@
   font-weight: 700;
   padding: 1em;
 
-  transition: background-color 250ms ease, color 500ms ease;
+  transition: background-color 500ms ease, color 600ms ease;
 }
 
 .main-nav li a:hover {

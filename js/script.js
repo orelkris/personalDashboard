@@ -1,3 +1,5 @@
+showSection("javascript");
+
 // BACKGROUND IMAGE
 let bgImage = "";
 getBackgroundImage();
@@ -229,6 +231,7 @@ assignmentButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     const assignmentType = event.target.id;
     showSection(assignmentType);
+    currentPage(button);
   });
 });
 
@@ -248,4 +251,15 @@ function showSection(type) {
     assignments.classList.add("fade-in");
     assignments.classList.remove("fade-out");
   });
+}
+
+function currentPage(target) {
+  const buttons = Array.from(
+    document.querySelectorAll(".secondary-nav button")
+  );
+  for (let button of buttons) {
+    button.classList.remove("underline");
+  }
+
+  target.classList.add("underline");
 }
