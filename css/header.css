@@ -171,11 +171,6 @@ html {
   align-items: center;
 }
 
-.chev-container:hover,
-.chev-container:focus {
-  cursor: pointer;
-}
-
 .chev-container span {
   opacity: 0;
   color: #92ff05;
@@ -198,9 +193,9 @@ a.chev-title {
   font-size: 1.5rem;
   font-weight: 700;
   position: absolute;
-  top: 70%;
+  top: 55%;
   text-decoration: none;
-  padding: 1rem;
+  padding: 2rem;
   z-index: 200;
 }
 
