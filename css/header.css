@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .outer-container {
   background: no-repeat center center fixed;
   background-size: cover;
@@ -40,7 +44,7 @@
 
 .header-bottom {
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
 }
 
 .author {
@@ -152,4 +156,73 @@
 
 .cold {
   color: rgb(40, 235, 241);
+}
+
+/* CHEVRON */
+.chev-container {
+  position: relative;
+  height: 100px;
+  width: 200px;
+  padding: 2rem;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chev-container:hover,
+.chev-container:focus {
+  cursor: pointer;
+}
+
+.chev-container span {
+  opacity: 0;
+  color: #92ff05;
+  border-style: solid;
+  border-width: 0.8rem 0.8rem 0 0;
+  content: "";
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  transform: rotate(135deg);
+  vertical-align: top;
+
+  /* animation: test 2s ease infinite; */
+}
+
+a.chev-title {
+  display: block;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  position: absolute;
+  top: 70%;
+  text-decoration: none;
+  padding: 1rem;
+  z-index: 200;
+}
+
+.chev-1 {
+  animation: test 3s ease infinite 0.5s;
+}
+
+.chev-2 {
+  animation: test 3s ease infinite 1.5s;
+}
+.chev-3 {
+  animation: test 3s ease infinite 2.5s;
+}
+
+@keyframes test {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: 50%;
+    opacity: 0;
+  }
 }

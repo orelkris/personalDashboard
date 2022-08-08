@@ -1,4 +1,5 @@
 showSection("javascript");
+const test = document.querySelector(".chev-container");
 
 // BACKGROUND IMAGE
 let bgImage = "";
