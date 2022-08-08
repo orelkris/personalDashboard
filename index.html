@@ -8,10 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;500;800&family=Montserrat:wght@300;600;800&family=Shadows+Into+Light&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/pages/css/about-me-styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
       href="https://fonts.googleapis.com/css2?family=Ibarra+Real+Nova:ital,wght@0,400;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/all.css" />
+
     <script src="js/script.js" defer></script>
   </head>
   <body>
@@ -20,60 +29,14 @@
         <div class="nav-logo">
           <li>Kris O.</li>
         </div>
-        <div class="nav-items">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About&nbsp;me</a></li>
-          <li><a href="#">Resume</a></li>
-          <li><a href="#">Other&nbsp;Projects</a></li>
+        <div id="main-nav-items" class="nav-items">
+          <li><a href="#" id="home">Home</a></li>
+          <li><a href="#" id="about-me">About&nbsp;me</a></li>
+          <li><a href="#" id="resume">Resume</a></li>
+          <li><a href="#" id="other">Other&nbsp;Projects</a></li>
         </div>
       </ul>
     </nav>
-    <header id="outer-container" class="outer-container container-flex">
-      <div class="header-top">
-        <article id="crypto" class="crypto">
-          <div id="crypto-header" class="crypto-header"></div>
-          <div id="crypto-body" class="crypto-body"></div>
-        </article>
-        <article id="weather" class="weather">
-          <!-- <div id="weather-container" class="weather-container"></div> -->
-        </article>
-      </div>
-      <div class="header-middle">
-        <article>
-          <span id="current-time" class="current-time"></span>
-        </article>
-      </div>
-      <div class="header-bottom">
-        <article>
-          <p id="author" class="author"></p>
-        </article>
-        <div class="chev-container">
-          <a class="chev-title" href="#assignments">Projects</a>
-
-          <span class="chev-1"></span>
-          <span class="chev-2"></span>
-          <span class="chev-3"></span>
-        </div>
-
-        <!-- for spacing only -->
-        <div></div>
-      </div>
-    </header>
-    <nav id="secondary-nav" class="secondary-nav">
-      <ul>
-        <li>
-          <button id="javascript" class="underline">JavaScript</button>
-        </li>
-        <li>
-          <button id="layout">Layout</button>
-        </li>
-        <li>
-          <button id="react">React</button>
-        </li>
-      </ul>
-    </nav>
-    <main>
-      <div id="assignments" class="cards"></div>
-    </main>
+    <div id="page-content"></div>
   </body>
 </html>

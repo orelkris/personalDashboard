@@ -130,6 +130,11 @@ button {
   padding: 1.4em;
 }
 
+.card-content h2,
+.cart-content p {
+  font-family: "Ibarra Real Nova", serif;
+}
+
 .card-content h2 {
   margin-top: 0;
   margin-bottom: 0.5em;

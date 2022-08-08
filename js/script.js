@@ -1,13 +1,35 @@
-showSection("javascript");
-const test = document.querySelector(".chev-container");
+window.addEventListener("load", (event) => {
+  loadHomePage();
+});
+
+let currentPageType = "home";
+
+const apiKey = "f575e56264f4022e0ea535aa2860e455";
 
 // BACKGROUND IMAGE
 let bgImage = "";
-getNewImage();
-getBackgroundImage();
+function loadHomePage() {
+  showPage("home");
+  setTimeout(() => {
+    getNewImage();
+    getBackgroundImage();
+    showSection("javascript");
+
+    // GET COIN INFORMATION
+    getCryptoInfo("bitcoin");
+
+    setInterval(() => {
+      if (currentPageType === "home") {
+        createCurrentTimeHtml();
+      }
+    }, 1000);
+
+    getCoordinates();
+  }, 1000);
+}
+
 function getBackgroundImage() {
   const test = localStorage.getItem("bgImage");
-  console.log(JSON.parse(test));
   if (test === null) {
     fetch(
       "https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature"
@@ -79,10 +101,7 @@ function createElement(elem) {
   return document.createElement(elem);
 }
 
-// GET COIN INFORMATION
-getCryptoInfo("bitcoin");
-
-// getCryptoInfo("bitcoin");
+// CRYPTO
 
 function getCryptoInfo(coinType) {
   fetch(`https://api.coingecko.com/api/v3/coins/${coinType}`)
@@ -153,10 +172,6 @@ function createCryptoHtml(obj = {}) {
 }
 
 // CURRENT TIME
-setInterval(() => {
-  createCurrentTimeHtml();
-}, 1000);
-
 function createCurrentTimeHtml() {
   const timeElem = document.getElementById("current-time");
   const time = new Date();
@@ -170,8 +185,6 @@ function createCurrentTimeHtml() {
 }
 
 // WEATHER API
-const apiKey = "f575e56264f4022e0ea535aa2860e455";
-getCoordinates();
 function getCoordinates() {
   if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -192,7 +205,6 @@ function getCoordinates() {
           return res.json();
         })
         .then((data) => {
-          console.log(data);
           const weatherObj = createWeatherObj(data);
           createWeatherHtml(weatherObj);
         })
@@ -213,8 +225,6 @@ function createWeatherObj(obj) {
       alt: obj.weather[0].main,
     },
   };
-
-  console.log(weatherObj);
 
   return weatherObj;
 }
@@ -262,7 +272,7 @@ assignmentButtons.forEach((button) => {
   button.addEventListener("click", (event) => {
     const assignmentType = event.target.id;
     showSection(assignmentType);
-    currentPage(button);
+    currentAssignment(button);
   });
 });
 
@@ -284,7 +294,7 @@ function showSection(type) {
   });
 }
 
-function currentPage(target) {
+function currentAssignment(target) {
   const buttons = Array.from(
     document.querySelectorAll(".secondary-nav button")
   );
@@ -293,4 +303,32 @@ function currentPage(target) {
   }
 
   target.classList.add("underline");
+}
+
+// PAGE CHANGE
+
+const mainNavItems = Array.from(
+  document.querySelectorAll("#main-nav-items > li > a")
+);
+
+mainNavItems.forEach((item) => {
+  item.addEventListener("click", (event) => {
+    const pageType = event.target.id;
+    if (pageType === "home") {
+      loadHomePage();
+    } else {
+      showPage(pageType);
+    }
+  });
+});
+
+function showPage(pageType) {
+  const page = document.getElementById("page-content");
+  fetch(`./pages/${pageType}.html`)
+    .then((response) => response.text())
+    .then((data) => {
+      page.innerHTML = data;
+
+      currentPageType = pageType;
+    });
 }
