@@ -10,12 +10,13 @@
 .main-nav ul {
   background: hsl(0, 0%, 100%);
   list-style-type: none;
-  padding: 0;
+  padding: 0 1rem;
   margin: 0;
-  box-shadow: 2px 2px 5px hsl(0, 0%, 11%);
+  box-shadow: 3px 3px 5px hsl(0, 4%, 55%) !important;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 5rem;
 }
 
 .nav-logo {
@@ -42,9 +43,15 @@
   color: white;
 }
 
+.nav-logo li {
+  color: hsl(240, 82%, 63%);
+  font-style: italic;
+}
+
 @media screen and (max-width: 40em) {
   .main-nav ul {
     flex-direction: column;
+    gap: 0;
   }
 
   .nav-items {
@@ -69,6 +76,6 @@
 @media screen and (min-width: 60em) {
   .nav-items li a,
   .nav-logo li {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
 }

@@ -17,8 +17,10 @@
     <article>
       <p id="author" class="author"></p>
     </article>
-    <div class="chev-container">
-      <a class="chev-title" href="#assignments">Projects</a>
+    <div class="chev-container chevron-down">
+      <a id="go-to-assignments" class="chev-title" href="#secondary-nav"
+        >Projects</a
+      >
 
       <span class="chev-1"></span>
       <span class="chev-2"></span>
@@ -29,19 +31,30 @@
     <div></div>
   </div>
 </header>
-<nav id="secondary-nav" class="secondary-nav">
-  <ul>
-    <li>
-      <button id="javascript" class="underline">JavaScript</button>
-    </li>
-    <li>
-      <button id="layout">Layout</button>
-    </li>
-    <li>
-      <button id="react">React</button>
-    </li>
-  </ul>
-</nav>
-<main>
-  <div id="assignments" class="cards"></div>
-</main>
+<div class="secondary-outer-container">
+  <nav id="secondary-nav" class="secondary-nav">
+    <ul>
+      <li>
+        <button id="javascript" class="underline">JavaScript</button>
+      </li>
+      <li>
+        <button id="layout">Layout</button>
+      </li>
+      <li>
+        <button id="react">React</button>
+      </li>
+    </ul>
+  </nav>
+  <main>
+    <div id="assignments" class="cards"></div>
+    <div class="chev-container chevron-up">
+      <a id="go-back-up" class="chev-title-up" href="#outer-container"
+        >Back Up</a
+      >
+
+      <span class="chev-1-rev"></span>
+      <span class="chev-2-rev"></span>
+      <span class="chev-3-rev"></span>
+    </div>
+  </main>
+</div>

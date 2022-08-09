@@ -49,3 +49,91 @@ body {
   letter-spacing: 0.1rem;
   font-weight: 400;
 }
+
+/* CHEVRON */
+.chev-container {
+  position: relative;
+  height: 100px;
+  width: 200px;
+  padding: 2rem;
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chev-container span {
+  opacity: 0;
+  color: #92ff05;
+  border-style: solid;
+  border-width: 0.8rem 0.8rem 0 0;
+  content: "";
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  position: absolute;
+  vertical-align: top;
+
+  /* animation: chevron 2s ease infinite; */
+}
+
+.chevron-up span {
+  transform: rotate(315deg);
+}
+
+.chevron-down span {
+  transform: rotate(135deg);
+}
+
+a.chev-title,
+a.chev-title-up {
+  display: block;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 700;
+  position: absolute;
+  top: 55%;
+  text-decoration: none;
+  padding: 2rem;
+  z-index: 200;
+}
+
+a.chev-title-up {
+  color: #000;
+  top: 20%;
+}
+
+.chev-1 {
+  animation: chevron 3s ease infinite 0.5s;
+}
+
+.chev-2 {
+  animation: chevron 3s ease infinite 1.5s;
+}
+.chev-3 {
+  animation: chevron 3s ease infinite 2.5s;
+}
+
+.chev-1-rev {
+  animation: chevron 3s ease reverse infinite 0.5s;
+}
+
+.chev-2-rev {
+  animation: chevron 3s ease reverse infinite 1.5s;
+}
+.chev-3-rev {
+  animation: chevron 3s ease reverse infinite 2.5s;
+}
+
+@keyframes chevron {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+
+  100% {
+    top: 50%;
+    opacity: 0;
+  }
+}

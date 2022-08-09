@@ -6,6 +6,46 @@ let currentPageType = "home";
 
 const apiKey = "f575e56264f4022e0ea535aa2860e455";
 
+// SCROLLING
+const body = document.querySelector("body");
+
+// body.addEventListener("mousewheel", enableScrolling);
+body.addEventListener("mousewheel", () => {
+  createWheelStopListener(body, enableScrolling, 0);
+});
+body.addEventListener("scroll", disableScrolling);
+
+window.addEventListener("load", (event) => {
+  body.style.overflow = "hidden";
+});
+
+function disableScrolling() {
+  setTimeout(function () {
+    body.style.overflow = "hidden";
+  }, 2000);
+}
+
+function enableScrolling() {
+  body.style.overflow = "auto";
+}
+
+function createWheelStopListener(element, callback, timeout) {
+  let handle = null;
+  let onScroll = function () {
+    if (handle) {
+      clearTimeout(handle);
+    }
+    handle = setTimeout(callback, timeout || 200); // default 200 ms
+  };
+  element.addEventListener("wheel", onScroll);
+  return function () {
+    element.removeEventListener("wheel", onScroll);
+  };
+}
+
+createWheelStopListener(window, function () {
+  disableScrolling();
+});
 // BACKGROUND IMAGE
 let bgImage = "";
 function loadHomePage() {
@@ -30,7 +70,40 @@ function loadHomePage() {
       document.querySelectorAll("#secondary-nav button")
     );
 
-    console.log(assignmentButtons);
+    const goToAssignments = document.getElementById("go-to-assignments");
+    const goBackUp = document.getElementById("go-back-up");
+    const mainNav = document.getElementById("main-nav");
+
+    window.addEventListener("scroll", (event) => {
+      console.log(window.scrollY);
+      if (window.scrollY === 0) {
+        mainNav.classList.add("fade-in");
+        mainNav.classList.remove("fade-out");
+        mainNav.classList.remove("hidden");
+      }
+
+      if (window.scrollY > 500) {
+        mainNav.classList.add("fade-out");
+        setTimeout(() => {
+          mainNav.classList.add("hidden");
+        }, 500);
+      }
+    });
+
+    goToAssignments.addEventListener("click", () => {
+      mainNav.classList.add("fade-out");
+      setTimeout(() => {
+        mainNav.classList.add("hidden");
+      }, 500);
+    });
+
+    goBackUp.addEventListener("click", () => {
+      setTimeout(() => {
+        mainNav.classList.add("fade-in");
+        mainNav.classList.remove("fade-out");
+        mainNav.classList.remove("hidden");
+      }, 500);
+    });
 
     assignmentButtons.forEach((button) => {
       button.addEventListener("click", (event) => {
