@@ -25,6 +25,20 @@ function loadHomePage() {
     }, 1000);
 
     getCoordinates();
+
+    const assignmentButtons = Array.from(
+      document.querySelectorAll("#secondary-nav button")
+    );
+
+    console.log(assignmentButtons);
+
+    assignmentButtons.forEach((button) => {
+      button.addEventListener("click", (event) => {
+        const assignmentType = event.target.id;
+        showSection(assignmentType);
+        currentAssignment(button);
+      });
+    });
   }, 1000);
 }
 
@@ -264,18 +278,6 @@ function createWeatherHtml(obj = {}) {
 
 // FETCHING ASSIGNMENT DATA***
 
-const assignmentButtons = Array.from(
-  document.querySelectorAll("#secondary-nav button")
-);
-
-assignmentButtons.forEach((button) => {
-  button.addEventListener("click", (event) => {
-    const assignmentType = event.target.id;
-    showSection(assignmentType);
-    currentAssignment(button);
-  });
-});
-
 function showSection(type) {
   const assignments = document.getElementById("assignments");
   assignments.classList.add("fade-out");
@@ -310,6 +312,8 @@ function currentAssignment(target) {
 const mainNavItems = Array.from(
   document.querySelectorAll("#main-nav-items > li > a")
 );
+
+console.log(mainNavItems);
 
 mainNavItems.forEach((item) => {
   item.addEventListener("click", (event) => {
