@@ -75,7 +75,7 @@ function loadHomePage() {
     const mainNav = document.getElementById("main-nav");
 
     window.addEventListener("scroll", (event) => {
-      if (window.scrollY < 100) {
+      if (window.scrollY === 0) {
         mainNav.classList.add("fade-in");
         mainNav.classList.remove("fade-out");
 
