@@ -1,0 +1,262 @@
+/* Global styles */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 18px;
+}
+
+body {
+  color: #111;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.7;
+}
+
+.project-img {
+  width: 300px;
+  border: 2px solid #f0e68c;
+  border-radius: 10px;
+}
+
+a {
+  color: #f0e68c;
+  text-decoration: none;
+}
+
+h1 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 3rem;
+  font-weight: 800;
+}
+
+h1,
+h2 {
+  margin: 0;
+}
+
+h2 {
+  font-family: "Shadows Into Light", cursive;
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.container {
+  width: 80%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
+h3 + p {
+  font-style: italic;
+}
+
+.education h3 ~ p,
+.work-experience h3 ~ p {
+  margin: 0;
+}
+
+/* the reason I am doing section and then removing last of type is because in the future I might add more projects or work experience and I want a border after each section but never the last one!  */
+.divider > section {
+  border-bottom: 1px dashed #222;
+}
+
+.divider > section:last-of-type {
+  border: none;
+}
+
+/* Profile */
+header {
+  background-color: #f3a712;
+}
+
+header .container h1 {
+  margin-top: 5rem;
+}
+
+/* Projects */
+
+.projects div h3 + p {
+  /* font-family: "Montserrat", sans-serif !important; */
+  text-align: left;
+}
+.projects {
+  /* background-color: #519872;
+     */
+  background: linear-gradient(120deg, #519872, #51ddaf 50%, #119872);
+}
+
+.projects .btn {
+  display: inline-block;
+  color: #f3eee1;
+  text-decoration: none;
+  padding: 5px 15px;
+  margin: 10px 0 0 5px;
+  background-color: #9b9304;
+  border-radius: 10px;
+  box-shadow: 0 0 3px 3px #f0e68c;
+}
+
+.projects a:hover {
+  background-color: #f3eee1;
+  color: #2b2902;
+  box-shadow: 0 0 3px 3px #181603;
+}
+
+.project-item-text {
+  /* float: left;
+    width: 300px; */
+  text-align: justify;
+}
+
+.project-item {
+  content: "";
+  display: table;
+  clear: both;
+  padding: 20px 0;
+  margin-top: 10px;
+}
+
+.project-item h3 {
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-size: 1.4rem;
+  margin-bottom: -10px;
+  margin-top: -8px;
+}
+
+/* Work Experience */
+.work-experience {
+  background: linear-gradient(270deg, #02c5c5, #02bebe 30%, #4ca5b4 100%);
+  /* background-color: #008B8B; */
+}
+
+.job-item li {
+  font-weight: 700;
+}
+
+.work-experience h3 {
+  font-size: 1.4rem;
+}
+
+/* Education */
+.education {
+  background-color: #f0e68c;
+  background-image: url(../images/sharon-mccutcheon-unsplash.jpg);
+  background-size: cover;
+  background-position: top right;
+  padding-bottom: 100px;
+}
+
+.education section h3 {
+  font-size: 1.4rem;
+}
+
+/* Contact info */
+footer {
+  background-color: #7d7abc;
+}
+
+.contact-list a {
+  padding: 20px;
+  display: inline-block;
+}
+
+/* Responsive */
+@media screen and (min-width: 750px) {
+  .project-item-img {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .job-item {
+    display: grid;
+    grid-template-columns: 2fr 2fr;
+    justify-content: center;
+    column-gap: 30px;
+  }
+
+  .education section {
+    width: 60%;
+    background-color: transparent;
+  }
+
+  header,
+  footer {
+    text-align: center;
+  }
+
+  .contact-list {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-top: -20px;
+  }
+
+  h1,
+  h2 {
+    line-height: 1.2;
+  }
+
+  .work-experience h3,
+  .project-item h3,
+  .education section h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+  }
+
+  p {
+    font-size: 0.8rem;
+  }
+
+  .job-item li {
+    font-weight: 700;
+    font-size: 0.75rem;
+  }
+
+  .contact-list {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .contact-list a {
+    padding: 10px;
+    display: inline-block;
+  }
+
+  .education section {
+    margin-top: 20px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  .education section h3 {
+    margin-top: -10px;
+  }
+}
