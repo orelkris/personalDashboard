@@ -75,14 +75,14 @@ function loadHomePage() {
     const mainNav = document.getElementById("main-nav");
 
     window.addEventListener("scroll", (event) => {
-      console.log(window.scrollY);
       if (window.scrollY === 0) {
         mainNav.classList.add("fade-in");
         mainNav.classList.remove("fade-out");
-        mainNav.classList.remove("hidden");
-      }
 
-      if (window.scrollY > 500) {
+        setTimeout(() => {
+          mainNav.classList.remove("hidden");
+        }, 800);
+      } else if (window.scrollY > 500) {
         mainNav.classList.add("fade-out");
         setTimeout(() => {
           mainNav.classList.add("hidden");
@@ -102,7 +102,7 @@ function loadHomePage() {
         mainNav.classList.add("fade-in");
         mainNav.classList.remove("fade-out");
         mainNav.classList.remove("hidden");
-      }, 500);
+      }, 800);
     });
 
     assignmentButtons.forEach((button) => {
@@ -385,8 +385,6 @@ function currentAssignment(target) {
 const mainNavItems = Array.from(
   document.querySelectorAll("#main-nav-items > li > a")
 );
-
-console.log(mainNavItems);
 
 mainNavItems.forEach((item) => {
   item.addEventListener("click", (event) => {
