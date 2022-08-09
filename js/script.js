@@ -22,7 +22,7 @@ window.addEventListener("load", (event) => {
 function disableScrolling() {
   setTimeout(function () {
     body.style.overflow = "hidden";
-  }, 2000);
+  }, 3000);
 }
 
 function enableScrolling() {
