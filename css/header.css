@@ -34,8 +34,14 @@
   justify-content: center;
 }
 
-.header-bottom article {
-  margin-right: 5rem;
+@media screen and (max-width: 40em) {
+  .header-top {
+    margin-top: 15rem;
+  }
+
+  .header-bottom article {
+    margin-right: 5rem;
+  }
 }
 
 .header-bottom {
