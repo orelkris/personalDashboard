@@ -101,14 +101,14 @@
 
 /* CURRENT TIME */
 .current-time {
-  font-size: 5rem;
+  font-size: 6rem;
   text-shadow: 1px 1px 4px rgb(0, 0, 0);
   color: hsl(0, 0%, 100%);
 }
 
 @media screen and (max-width: 40em) {
   .current-time {
-    font-size: 3rem;
+    font-size: 5rem;
   }
 }
 
