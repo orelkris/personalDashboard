@@ -6,46 +6,6 @@ let currentPageType = "home";
 
 const apiKey = "f575e56264f4022e0ea535aa2860e455";
 
-// SCROLLING
-const body = document.querySelector("body");
-
-// body.addEventListener("mousewheel", enableScrolling);
-body.addEventListener("mousewheel", () => {
-  createWheelStopListener(body, enableScrolling, 0);
-});
-body.addEventListener("scroll", disableScrolling);
-
-window.addEventListener("load", (event) => {
-  body.style.overflow = "hidden";
-});
-
-function disableScrolling() {
-  setTimeout(function () {
-    body.style.overflow = "hidden";
-  }, 3000);
-}
-
-function enableScrolling() {
-  body.style.overflow = "auto";
-}
-
-function createWheelStopListener(element, callback, timeout) {
-  let handle = null;
-  let onScroll = function () {
-    if (handle) {
-      clearTimeout(handle);
-    }
-    handle = setTimeout(callback, timeout || 200); // default 200 ms
-  };
-  element.addEventListener("wheel", onScroll);
-  return function () {
-    element.removeEventListener("wheel", onScroll);
-  };
-}
-
-createWheelStopListener(window, function () {
-  disableScrolling();
-});
 // BACKGROUND IMAGE
 let bgImage = "";
 function loadHomePage() {
@@ -73,20 +33,20 @@ function loadHomePage() {
     const goToAssignments = document.getElementById("go-to-assignments");
     const goBackUp = document.getElementById("go-back-up");
     const mainNav = document.getElementById("main-nav");
-
-    window.addEventListener("scroll", (event) => {
-      if (window.scrollY === 0) {
+    const childContainer = document.getElementById("child-container");
+    childContainer.addEventListener("scroll", (event) => {
+      if (event.target.scrollTop === 0) {
         mainNav.classList.add("fade-in");
         mainNav.classList.remove("fade-out");
 
         setTimeout(() => {
           mainNav.classList.remove("hidden");
-        }, 800);
-      } else if (window.scrollY > 500) {
+        }, 300);
+      } else if (event.target.scrollTop > 600) {
         mainNav.classList.add("fade-out");
         setTimeout(() => {
           mainNav.classList.add("hidden");
-        }, 500);
+        }, 300);
       }
     });
 
@@ -94,7 +54,7 @@ function loadHomePage() {
       mainNav.classList.add("fade-out");
       setTimeout(() => {
         mainNav.classList.add("hidden");
-      }, 500);
+      }, 300);
     });
 
     goBackUp.addEventListener("click", () => {

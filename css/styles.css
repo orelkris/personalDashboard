@@ -6,13 +6,7 @@ html,
 }
 
 html {
-  font: 0.9rem/1.5 "Comic Sans MS", cursive;
-}
-
-@media screen and (min-width: 800px) {
-  html {
-    font: 1.125rem/1.5 "Comic Sans MS", cursive;
-  }
+  font: 1rem/1.5 "Comic Sans MS", cursive;
 }
 
 h1,
@@ -38,9 +32,35 @@ button {
   border: none;
 }
 
-/* colors 
+html {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-*/
+* {
+  scroll-behavior: smooth;
+}
+
+#parent-container {
+  height: 100%;
+  width: calc(100% + 20px);
+  overflow: hidden;
+}
+
+#child-container {
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 20px;
+}
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
 
 /* ***typography*** */
 
@@ -59,7 +79,6 @@ body {
   height: 100px;
   width: 200px;
   padding: 2rem;
-  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
