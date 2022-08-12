@@ -133,7 +133,7 @@ function createBackgroundImageHtml(imgObj) {
   author.textContent = imgObj.author;
   author.classList.add("bg-image-author");
 
-  outerContainer.appendChild(author);
+  outerContainer.append(author);
 }
 
 function getNewImage(difference = 86400) {

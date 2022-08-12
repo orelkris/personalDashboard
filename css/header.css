@@ -3,7 +3,7 @@
   background-size: cover;
   background-color: rgba(5, 39, 112, 0.8);
   background-blend-mode: overlay;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   position: relative;
 }
@@ -11,7 +11,7 @@
 .container-flex {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .header-top {
@@ -34,9 +34,16 @@
   justify-content: center;
 }
 
+.header-bottom article {
+  margin-right: 5rem;
+}
+
 .header-bottom {
+  height: 10rem;
   display: flex;
   justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
 }
 
 .author {
