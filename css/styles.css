@@ -6,7 +6,7 @@ html,
 }
 
 html {
-  font: 1rem/1.5 "Comic Sans MS", cursive;
+  font: 1rem/1.5 'Comic Sans MS', cursive;
 }
 
 h1,
@@ -65,7 +65,7 @@ body {
 /* ***typography*** */
 
 body {
-  font-family: "Ibarra Real Nova", serif;
+  font-family: 'Ibarra Real Nova', serif;
   letter-spacing: 0.1rem;
   font-weight: 400;
 }
@@ -91,7 +91,7 @@ body {
   color: #92ff05;
   border-style: solid;
   border-width: 0.8rem 0.8rem 0 0;
-  content: "";
+  content: '';
   display: inline-block;
   height: 3rem;
   width: 3rem;

@@ -29,10 +29,11 @@
 
 .nav-items li a,
 .nav-logo li {
+  font-size: 1.1rem;
+  font-weight: 700;
   display: block;
   text-decoration: none;
   color: black;
-  font-weight: 700;
   padding: 1em;
 
   transition: background-color 500ms ease, color 600ms ease;
